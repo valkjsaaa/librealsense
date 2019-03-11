@@ -525,7 +525,7 @@ void playback_device::try_looping()
             if (m_sample_rate > 0)
             {
                 LOG_DEBUG("Sleeping for: " << (sleep_time.count() / 1000) / 1000);
-                std::this_thread::sleep_for(sleep_time);
+                // std::this_thread::sleep_for(sleep_time);
             }
         }
         if (auto frame = data->as<serialized_frame>())
