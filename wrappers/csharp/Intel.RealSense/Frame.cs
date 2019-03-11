@@ -111,6 +111,20 @@ namespace Intel.RealSense
                 return timestampDomain;
             }
         }
+
+        public bool SupportsFrameMetadata(FrameMetadataValue frameMetadata)
+        {
+            object error;
+            var r = NativeMethods.rs2_supports_frame_metadata(m_instance.Handle, frameMetadata, out error);
+            return r != 0;
+        }
+
+        public long GetFrameMetadata(FrameMetadataValue frameMetadata)
+        {
+            object error;
+            var metadata = NativeMethods.rs2_get_frame_metadata(m_instance.Handle, frameMetadata, out error);
+            return metadata;
+        }
     }
 
     public class VideoFrame : Frame
